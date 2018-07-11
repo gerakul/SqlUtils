@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <Version>1.0.0</Version>
+    <Authors>gerakul</Authors>
+    <Description>Some extended utils for work with MS SQL Server using FastSql</Description>
+    <RepositoryUrl>https://github.com/gerakul/SqlUtils</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyName>Gerakul.SqlUtils</AssemblyName>
+    <PackageId>Gerakul.SqlUtils</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Gerakul.FastSql" Version="1.0.2" />
+  </ItemGroup>
+
+</Project>
