@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>gerakul</Authors>
     <Description>Some extended utils for work with MS SQL Server using FastSql</Description>
     <RepositoryUrl>https://github.com/gerakul/SqlUtils</RepositoryUrl>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Gerakul.FastSql" Version="1.0.3" />
+    <PackageReference Include="Gerakul.FastSql.SqlServer" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

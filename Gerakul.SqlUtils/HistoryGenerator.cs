@@ -1,13 +1,13 @@
-﻿using Gerakul.FastSql;
+﻿using Gerakul.FastSql.Common;
+using Gerakul.FastSql.SqlServer;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Gerakul.SqlUtils
 {
     public class HistoryGenerator
     {
+        private ConnectionStringContext context;
         protected SqlMetadata metadata;
 
         public string ConnectionString { get; private set; }
@@ -16,6 +16,7 @@ namespace Gerakul.SqlUtils
         {
             this.ConnectionString = connectionString;
             this.metadata = new SqlMetadata(connectionString);
+            this.context = SqlContextProvider.DefaultInstance.CreateContext(connectionString);
         }
 
         public void ExecuteHistoryScript(string originalSchema, string originalTableName,
@@ -31,10 +32,10 @@ namespace Gerakul.SqlUtils
             string table = GenerateHistoryTable(tableDescription, historySchema, historyTableName);
             string trigger = GenerateHistoryTrigger(tableDescription, historySchema, historyTableName);
 
-            SqlScope.UsingTransaction(ConnectionString, scope =>
+            context.UsingTransaction(tc =>
             {
-                scope.CreateSimple(table).ExecuteNonQuery();
-                scope.CreateSimple(trigger).ExecuteNonQuery();
+                tc.CreateSimple(table).ExecuteNonQuery();
+                tc.CreateSimple(trigger).ExecuteNonQuery();
             });
         }
 
